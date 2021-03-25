@@ -9,7 +9,7 @@ const plvl1 = require("../middleware/permission_level_1");
 const plvl2 = require("../middleware/permission_level_2");
 
 
-router.get("/", async (req, res) => {
+router.post("/", async (req, res) => {
     let {email, password} = req.body
 
     if(!email || !password) return res.status(400).json({msg: "Email or password is required!"});
@@ -26,6 +26,7 @@ router.get("/", async (req, res) => {
             jwt.sign({id: data._id}, process.env.JWT_SECRET, (err, token)=>{
                 if(err) throw err;
                 res.status(200).json({token: token, id: data._id})
+                
             })
         })
     })

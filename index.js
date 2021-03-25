@@ -29,3 +29,5 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
 //route
 app.use("/user", require("./routes/user"));
 
+app.use("/users", require("./routes/users/user_login"));
+
